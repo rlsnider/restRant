@@ -9,7 +9,7 @@ app.get('/', (req, res)=> {
     res.send('Hello world!')
 })
 app.get('*', (req, res) => {
-    res.status(404).   send('<h1>404 Page</h1>')
+    res.status(404).send('Your still here, but this page is not built yet.')
 })
 
 app.listen(process.env.PORT, function () {
