@@ -12,7 +12,7 @@ app.get('/', (req, res)=> {
     res.render('home')
 })
 app.get('*', (req, res) => {
-    res.status(404).send('You are still here, but this page is not built yet. (404)')
+    res.render('error404')
 })
 
 app.listen(process.env.PORT, function () {
