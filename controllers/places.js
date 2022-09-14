@@ -18,7 +18,7 @@ router.get('/', (req, res)=> {
       }]
       
 
-    res.render('places/index', { places })
+    res.render('index', { places })
 })
 
 module.exports = router
