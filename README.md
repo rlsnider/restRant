@@ -6,13 +6,17 @@
 
 ## Tech Usage
 
+Server-Side Rendering: JSX
+
+Node Modules: dotenv, express, express-react-views
+
 ### Routes
 
 | Method | Path               | Purpose                                          |
 |--------|--------------------|--------------------------------------------------|
 | GET    | /                  | Home page                                        |
 | GET    | /places            | Places index page                                |
-| POST   | /places            | Create new place                                 |
+| POST   | /places            | Create a new place                               |
 | GET    | /places/new        | Form page for creating a new place               |
 | GET    | /places/:id        | Details about a particular place                 |
 | PUT    | /places/:id        | Update a particular place                        |
@@ -44,3 +48,17 @@
 | rating    | Number                 |
 | comment   | String                 |
 | reviewer  | String                 |
+
+
+## Planning
+
+### User Stories
+For the person who wants to review a restraunt before visiting or would like to rate/review a restraunt they have visited.
+
+### Wireframes
+Main Landing Page ==>   Index Page = GET => Individual Places  = POST => Reviews
+                        => Full list of Places                 = DELETE => Reviews
+                        => POST => Add a new restraunt         = EDIT => individual place or review
+                        => DELETE 
+
+To be updated
