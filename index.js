@@ -1,16 +1,18 @@
 // MODULES AND GLOBALS
-require('dotenv').config()
-const express = require('express')
-const app = express()
+require('dotenv').config();
+const express = require('express');
+const app = express();
 
 // EXPRESS SETTINGS
-app.set('views', __dirname + '/views')
-app.set('view engine', 'jsx')
-app.engine('jsx', require('express-react-views').createEngine())
-app.use(express.static('public'))
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 
 //CONTROLLERS & ROUTES
-app.use('/places', require('./controllers/places'))
+app.use('/places', require('./controllers/places'));
+
 
 //Home Page
 app.get('/', (req, res)=> {

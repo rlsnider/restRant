@@ -3,11 +3,7 @@ const router = require('express').Router()
 //NEW Route
 router.get('/new', (req, res) => {
   res.render('places/new')
-})
-//POST /places
-router.post('/', (req, res) => {
-  res.send('POST /places stub')
-})
+
 //GET /places
 router.get('/', (req, res)=> {
     
@@ -28,6 +24,11 @@ router.get('/', (req, res)=> {
 
     res.render('places/index', { places })
 })
-
+})
+//POST /places
+router.post('/', (req, res) => {
+  console.log(req.body)
+  res.send('POST /places')
+})
 
 module.exports = router
