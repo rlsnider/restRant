@@ -1,5 +1,6 @@
 const React = require('react');
-const Def = require('../default')
+const Def = require('../default');
+const statesDropDown = document.getElementById("statesDropDown");
 
 function new_form () {
     return (
@@ -21,7 +22,12 @@ function new_form () {
                   </div>
                   <div className="form-group">
                     <label htmlFor="state">State</label>
-                    <input className="form-control" type="text" id="state" name="state" />
+                    <select id="statesDropDown" name="state" size="4" multiple>
+                      <option value="AL">Alabama</option>
+                      <option value="AK">Alaska</option>
+                      <option value="AZ">Arizona</option>
+                      <option value="CA">California</option>
+                    </select>
                   </div>
                   <div className="form-group">
                     <label htmlFor="cuisines">Cuisines</label>

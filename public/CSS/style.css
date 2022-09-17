@@ -7,3 +7,9 @@ h1 {
     background-color: Azure;
     
 }
+
+.footer {
+    height: 50px;
+    padding-bottom: -50px;
+    background-color: cornflowerblue;
+}
