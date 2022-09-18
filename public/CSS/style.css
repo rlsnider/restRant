@@ -3,6 +3,12 @@ h1 {
     text-align: center;
     color: cornflowerblue;
 }
+h2 { 
+    color: cornflowerblue;
+}
+#showBorder {
+    border: 10px ridge cornflowerblue;
+}
 body{
     background-color: lightblue;
     text-align: center;
