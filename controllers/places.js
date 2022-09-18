@@ -44,8 +44,16 @@ router.post('/', (req, res) => {
 
 //EDIT page form
 router.get('/:id/edit', (req, res) => { 
-  res.send('Edit /:id/edit');
+  let id = Number(req.params.id);
+  if (isNaN(id)) {
+    res.render('error404');
+  }
+  else if (!places[id]) {
+    res.render('error404')
+  }
+  res.render('places/edit', { place: places[id] })
 })
+
 router.put('/:id', (req, res) => {
   res.send("Edit a place");
 })
