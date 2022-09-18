@@ -51,11 +51,35 @@ router.get('/:id/edit', (req, res) => {
   else if (!places[id]) {
     res.render('error404')
   }
-  res.render('places/edit', { place: places[id] })
+  res.render('places/edit', { place: places[id], id})
 })
 
+//Put Route
 router.put('/:id', (req, res) => {
-  res.send("Edit a place");
+  console.log(req.params.id)
+  let id = Number(req.params.id);
+  console.log(id)
+  console.log(places[id])
+  if (isNaN(id)) {
+    res.render('error404');
+  }
+  else if (!places[id]) {
+    
+    res.render('error404');
+  }
+  else{
+    if(!req.body.pic) {
+      req.body.pic = "http://placekitten.com/400/400";
+    }
+    if(!req.body.city) {
+      req.body.city = 'Anytown';
+    }
+    if(!req.body.state) {
+      req.body.state = 'USA';
+    }
+    places[id] = req.body
+    res.redirect(`/places/${id}`)
+  }
 })
 
 //DELETE Route

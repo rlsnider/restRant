@@ -6,7 +6,7 @@ function edit_form (data) {
         <Def>
             <main>
                 <h1>Edit Place</h1>
-                <form action={`/places/${data.place.id}?_method=PUT`} method="POST">
+                <form action={`/places/${data.id}?_method=PUT`} method="POST">
                 <div className="row">
                   <div className="form-group col-sm-6">
                     <label htmlFor="name">Place Name</label>
@@ -22,7 +22,7 @@ function edit_form (data) {
                     <input 
                     className="form-control" 
                     //changed text from url in order to test route
-                    type="text" 
+                    type="url" 
                     id="pic" 
                     name="pic"
                     defaultValue={data.place.pic} 
