@@ -23,7 +23,14 @@ function Def (html) {
                     </ul>
                 </nav>
                 {html.children}
-                <footer></footer>
+                <footer>
+                    <nav>
+                        <ul>
+                            <li>Author: Ramona Snider</li>
+                            <li>Website: <a href="https://makemyinspiration.com">Mona's Inspiration</a></li>
+                        </ul>
+                    </nav>
+                </footer>
             </body>
 
         </html>
