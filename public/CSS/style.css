@@ -45,8 +45,11 @@ nav a:hover {
 }
 
 #errorDivOne {
-    background-color: Azure;
-    
+    background-color: Azure; 
+}
+/*Border for image for error 404*/
+#dogImage {
+    border: 10px ridge cornflowerblue;
 }
 
 footer {
