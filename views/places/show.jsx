@@ -29,14 +29,14 @@ function show (data) {
                         <h1>Comments</h1>
                     </div>
                 </div>
-                <a href={`/places/${data.id}/edit`} className="btn btn-warning">
-                    Edit
-                <i className="bi bi-pencil"></i>
-                    
+                <a href={`/places/${data.place.id}/edit`} className="btn btn-warning">
+                <i className="bi bi-pencil"></i> 
+                     Edit
                 </a>
-                <form action={`/places/${data.id}?_method=DELETE`} method="POST">
+                <form action={`/places/${data.place.id}?_method=DELETE`} method="POST">
                     <button type="submit" className="btn btn-danger">
-                        Delete
+                    <i className="bi bi-trash"></i>  
+                         Delete
                     </button>
                 </form>
             </main>
