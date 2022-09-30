@@ -7,6 +7,11 @@ function show (data) {
         No comments yet!
       </h3>
     )
+    let rating = (
+        <h3 className="inactive">
+            Not yet rated
+        </h3>
+    )
     if (data.place.comments.length) {
         let sumRatings=data.place.comments.reduce((tot, c)=>{
             return tot + c.stars
@@ -14,13 +19,13 @@ function show (data) {
         let averageRating = Math.round(sumRatings / data.place.comments.length)
         let stars = ''
         for(let i= 0; i < averageRating; i++){
-            stars += ''
+            stars += '⭐'
         }
-        // rating = (
-        //     <h3>
-        //     {stars}stars
-        //     </h3>
-        // )
+        rating = (
+            <h3>
+              {stars} stars
+            </h3>
+        )     
       comments = data.place.comments.map(c => {
         return (
           <div key="1" className="border col-sm-4">
@@ -28,7 +33,7 @@ function show (data) {
 
             <h4>{c.content}</h4>
             <h3>
-              <stong>- {c.author}</stong>
+              <strong>- {c.author}</strong>
             </h3>
             <h4>Rating: {c.stars}</h4>
             <form method="POST" action={`/places/${data.place.id}/comment/${c.id}?_method=DELETE`}>
@@ -54,6 +59,8 @@ function show (data) {
                 </div>
                 <div className="col-sm-6">
                     <h2>Rating</h2>
+                    {rating}
+                    <br />
                     <h2>Description</h2>
                     <h3>
                         {data.place.showEstablished()}
@@ -67,7 +74,7 @@ function show (data) {
                 <i className="bi bi-pencil"></i>
                     Edit
             </a>
-            <form action={`/places/${data.id}?_method=DELETE`} method="POST">
+            <form action={`/places/${data.place.id}?_method=DELETE`} method="POST">
                 <button type="submit" className="btn btn-danger">
                 <i className="bi bi-trash"></i>
                     Delete
@@ -86,8 +93,8 @@ function show (data) {
                     <input className="form-control" type="text" id="author" name="author" />
                 </div>
                 <div className="form-group col-sm-12">
-                    <label htmlFor="comments">Comments</label>
-                    <textarea className="form-control" id="comments" name="comments" />
+                    <label htmlFor="content">Content</label>
+                    <textarea className="form-control" id="content" name="content" />
                 </div>
                 <div className="form-group col-sm-4">
                     <label htmlFor="stars">Star Rating</label>
@@ -96,10 +103,10 @@ function show (data) {
                 <div className="form-group col-sm-2">
                     <div className="form-check">
                         <label htmlFor="rant">Rant?</label>
-                        <input className="form-control form-check-input" type="checkbox" id="rant" name="rant" defaultChecked />
+                        <input className= "form-control form-check-input" type="checkbox" id="rant" name="rant" />
                     </div>
                 </div>
-                <submit className="btn btn-primary">Submit</submit>
+                <input type="submit" value="Add Comment" className="btn btn-primary" />
             </form>
           </main>
         </Def>
