@@ -2,6 +2,7 @@ const React = require('react');
 const Def = require('../default')
 
 function show (data) {
+    
     let comments = (
       <h3 className="inactive">
         No comments yet!
@@ -12,6 +13,7 @@ function show (data) {
             Not yet rated
         </h3>
     )
+    
     if (data.place.comments.length) {
         let sumRatings = data.place.comments.reduce((tot, c)=>{
             return tot + c.stars
@@ -26,9 +28,11 @@ function show (data) {
             <h3>
               {stars} stars
             </h3>
-        )     
+        )  
+    
+         
       comments = data.place.comments.map(c => {
-        return (
+            return (
           <div key="1" className="border col-sm-4">
             <h2 className="rant">{c.rant ?'Rant! 😡' : 'Rave! 😻' }</h2>
 
@@ -43,9 +47,9 @@ function show (data) {
           </div>
         )
       })
-    }
-    return (
-        <Def>
+      
+      return (
+      <Def>
           <main>
             <div className="row">
               <h1>{data.place.name}</h1>
@@ -85,9 +89,11 @@ function show (data) {
             </form>
             <hr />
             <h2>Comments</h2>
-            <div className="row">
-            {comments}
-            </div>
+            
+                <div className="row">
+                    { comments }
+                </div>
+            
             <hr />
             <h2>Rant or Rave about this Place!</h2>
             <form method="POST" action={`/places/${data.place.id}/comment`}>
@@ -111,9 +117,10 @@ function show (data) {
                 </div>
                 <input type="submit" value="Add Comment" className="btn btn-primary" />
             </form>
+           
           </main>
         </Def>
-    )
+      )
 }
-
+}
 module.exports = show

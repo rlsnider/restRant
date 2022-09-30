@@ -57,7 +57,7 @@ router.get('/:id', (req, res) => {
 
 })
 
-
+// DELETE
 
 router.delete('/:id', (req, res) => {
   db.Place.findByIdAndDelete(req.params.id)
@@ -125,8 +125,14 @@ router.post('/:id/comment', (req, res) => {
   
 
 
-router.delete('/:id/rant/:rantId', (req, res) => {
-    res.send('GET /places/:id/rant/:rantId stub')
+router.delete('/:id/comment/:commentId', (req, res) => {
+  db.Place.findByIdAndDelete(req.params.id, req.body)
+  .then(() => {
+    res.redirect(`/places/${req.params.id}`)
+  })
 })
+
+  
+    
 
 module.exports = router
