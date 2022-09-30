@@ -51,6 +51,16 @@ function edit_form (data) {
                     />
                   </div>
                 </div>
+                  <div className="form-group col-sm-4">
+                    <label htmlFor="founded">Founded</label>
+                    <input
+                    className="form-control"
+                    //type="date"
+                    id="founded" 
+                    name="founded"
+                    defaultValue={data.place.founded}
+                    />
+                  </div>
                   <div className="form-group">
                     <label htmlFor="cuisines">Cuisines</label>
                     <input 
