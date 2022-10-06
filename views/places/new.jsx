@@ -33,7 +33,7 @@ function new_form (data) {
                     <input className="form-control" type="text" id="state" name="state" />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="founded">Founded Year</label>
+                    <label htmlFor="founded">Year Founded</label>
                     <input 
                     type="number"
                     className="form-control" 

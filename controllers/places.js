@@ -3,26 +3,18 @@ const db = require('../models')
 
 //Index
 router.get('/', (req, res) => {
-  db.Place.find()
-  .then((places) => {
-    res.render('places/index', { places })
+  db.Place.find() 
+    .then((places) =>{
+      res.render('places/index', { places })
+    }) 
+    .catch(err => {
+      console.log(err) 
+      res.render('error404')
+    })
   })
-  .catch(err => {
-    console.log(err)
-    res.render('error404')
-  })
-})
 
-//NEW
-router.get('/new', (req, res) => {
-  res.render('places/new')
-})
 //CREATE
 router.post('/', (req, res) => {
-  if (!req.body.pic) {
-    //Default image if one is not provided
-    req.body.pic = 'http://placekitten.com/400/400'
-  }
   db.Place.create(req.body)
   .then(() => {
     res.redirect('/places')
@@ -42,23 +34,27 @@ router.post('/', (req, res) => {
   })
 })
 
-//Show Page
+//NEW
+router.get('/new', (req, res) => {
+  res.render('places/new')
+})
+
+
+//Show page
 router.get('/:id', (req, res) => {
   db.Place.findById(req.params.id)
-  .populate('comments')
-  .then(place => {
-    console.log(place.comments, 'I am running router.get(/:id) the Show page')
-    res.render('places/show', { place })
-  })
-  .catch(err => {
-    console.log('err', err)
-    res.render('error404')
-  })
-
+    .populate('comments')
+      .then(place => {
+        console.log(place.comments, "I am running router.get(/:id) the Show Page")
+        res.render('places/show', { place })
+    }) 
+      .catch(err => {
+        console.log('err', err)
+        res.render('error404')
+      })
 })
 
 // DELETE
-
 router.delete('/:id', (req, res) => {
   db.Place.findByIdAndDelete(req.params.id)
   .then(place => {
@@ -83,7 +79,7 @@ router.get('/:id/edit', (req, res) =>{
 })
 
 //EDIT A PLACE
-router.put('/:id', (req, res) => {
+router.put('/:id', (req, res) => {                                  
   db.Place.findByIdAndUpdate(req.params.id, req.body)
   .then(() => {
     res.redirect(`/places/${req.params.id}`)
@@ -96,9 +92,9 @@ router.put('/:id', (req, res) => {
 // COMMENTS
 router.post('/:id/comment', (req, res) => {
   console.log('post comment', req.body)
-  if(req.body.author==='') {
-    req.body.author= undefined
-   }
+  if(req.body.author === '') {
+    req.body.author = undefined
+  }
     req.body.rant = req.body.rant ? true : false
     db.Place.findById(req.params.id)
       .then(place=> {
@@ -110,7 +106,7 @@ router.post('/:id/comment', (req, res) => {
                 res.redirect(`/places/${req.params.id}`)
               })
               .catch(err => {
-                conssole.log('comment.create error', err)
+                console.log('comment.create error', err)
                 res.render('error404')
               })
             })
@@ -123,7 +119,7 @@ router.post('/:id/comment', (req, res) => {
             })
       })
   
-
+//Delete comments
 
 router.delete('/:id/comment/:commentId', (req, res) => {
   db.Place.findByIdAndDelete(req.params.id, req.body)

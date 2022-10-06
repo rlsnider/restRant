@@ -1,4 +1,4 @@
-const React = require('react');
+const React = require('react')
 const Def = require('../default')
 
 function show (data) {
@@ -19,7 +19,6 @@ function show (data) {
             return tot + c.stars
         }, 0)
         let averageRating = Math.round(sumRatings / data.place.comments.length)
-        
         let stars = ''
         for(let i= 0; i < averageRating; i++){
             stars += '⭐'
@@ -37,23 +36,22 @@ function show (data) {
             <h2 className="rant">{c.rant ?'Rant! 😡' : 'Rave! 😻' }</h2>
 
             <h4>{c.content}</h4>
-            <h3>
-              <strong>- {c.author}</strong>
-            </h3>
+                <h3>
+                    <strong>- {c.author}</strong>
+                </h3> 
             <h4>Rating: {c.stars}</h4>
             <form method="POST" action={`/places/${data.place.id}/comment/${c.id}?_method=DELETE`}>
                 <input type="submit" className="btn btn-danger" value="Delete Comment" />
             </form>
           </div>
-        )
-      })
-      
-      return (
+            )
+        })
+        return (
       <Def>
           <main>
             <div className="row">
               <h1>{data.place.name}</h1>
-              <h3>{data.cuisines}</h3>
+              <h3>{data.place.cuisines}</h3>
             </div>
             <div className="row">
                 <div className="col-sm-6">
@@ -95,6 +93,7 @@ function show (data) {
                 </div>
             
             <hr />
+            
             <h2>Rant or Rave about this Place!</h2>
             <form method="POST" action={`/places/${data.place.id}/comment`}>
                 <div className="form-group col-sm-12">
@@ -117,10 +116,10 @@ function show (data) {
                 </div>
                 <input type="submit" value="Add Comment" className="btn btn-primary" />
             </form>
-           
           </main>
         </Def>
-      )
+        )
+    }
 }
-}
+
 module.exports = show
